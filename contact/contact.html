@@ -3364,57 +3364,96 @@
                                             <div class="column mcb-column one-second column_column ">
                                                 <div class="column_attr clearfix" style="">
                                                     <div style="margin: 20px 5%;">
-                                                        <div role="form" class="wpcf7" id="wpcf7-f62-p31-o1" lang="en-US" dir="ltr">
+                                                        <div role="form" class="contact-form" id="contact-form" lang="en-US" dir="ltr">
                                                             <div class="screen-reader-response">
                                                                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                                 <ul></ul>
                                                             </div>
-                                                            <form action="/contact/" method="post" class="wpcf7-form init wpcf7-acceptance-as-validation" novalidate="novalidate" data-status="init">
-                                                                <div style="display: none;">
-                                                                    <input type="hidden" name="_wpcf7" value="62"/>
-                                                                    <input type="hidden" name="_wpcf7_version" value="5.4.2"/>
-                                                                    <input type="hidden" name="_wpcf7_locale" value="en_US"/>
-                                                                    <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f62-p31-o1"/>
-                                                                    <input type="hidden" name="_wpcf7_container_post" value="31"/>
-                                                                    <input type="hidden" name="_wpcf7_posted_data_hash" value=""/>
-                                                                    <input type="hidden" name="_wpcf7_recaptcha_response" value=""/>
+                                                            <form action="/sendmail.php" method="post" class="contact-form__form init" novalidate="novalidate" data-status="init">
+                                                                <div class="column one-half">
+                                                                    <div class="form-group">
+                                                                        <label for="your-name" class="form-label">Your Name</label>
+                                                                        <input type="text" id="your-name" name="your-name" class="form-control" aria-required="true" placeholder="Your name" required />
+                                                                    </div>
                                                                 </div>
-                                                                <div class="column one-second">
-                                                                    <span class="wpcf7-form-control-wrap your-name">
-                                                                        <input type="text" name="your-name" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Your name"/>
-                                                                    </span>
-                                                                </div>
-                                                                <div class="column one-second">
-                                                                    <span class="wpcf7-form-control-wrap your-email">
-                                                                        <input type="email" name="your-email" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Your e-mail"/>
-                                                                    </span>
+                                                                <div class="column one-half">
+                                                                    <div class="form-group">
+                                                                        <label for="your-email" class="form-label">Your Email</label>
+                                                                        <input type="email" id="your-email" name="your-email" class="form-control" aria-required="true" placeholder="Your e-mail" required />
+                                                                    </div>
                                                                 </div>
                                                                 <div class="column one">
-                                                                    <span class="wpcf7-form-control-wrap your-subject">
-                                                                        <input type="text" name="your-subject" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Subject"/>
-                                                                    </span>
+                                                                    <div class="form-group">
+                                                                        <label for="your-subject" class="form-label">Subject</label>
+                                                                        <input type="text" id="your-subject" name="your-subject" class="form-control" placeholder="Subject" />
+                                                                    </div>
                                                                 </div>
                                                                 <div class="column one">
-                                                                    <span class="wpcf7-form-control-wrap your-message">
-                                                                        <textarea name="your-message" cols="40" rows="3" class="wpcf7-form-control wpcf7-textarea" aria-invalid="false" placeholder="Message"></textarea>
-                                                                    </span>
+                                                                    <div class="form-group">
+                                                                        <label for="your-message" class="form-label">Message</label>
+                                                                        <textarea id="your-message" name="your-message" rows="3" class="form-control" placeholder="Message"></textarea>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="column one">
-                                                                    <span class="wpcf7-form-control-wrap acceptance-93">
-                                                                        <span class="wpcf7-form-control wpcf7-acceptance">
-                                                                            <span class="wpcf7-list-item">
-                                                                                <input type="checkbox" name="acceptance-93" value="1" aria-invalid="false"/>
-                                                                            </span>
-                                                                        </span>
-                                                                    </span>
-                                                                    I authorize the processing of data as per <a href="/privacy-and-cookies-policy">privacy policy</a>
+                                                                    <div class="form-group form-checkbox">
+                                                                        <input type="checkbox" id="acceptance-93" name="acceptance-93" value="1" aria-invalid="false" required />
+                                                                        <label for="acceptance-93" class="checkbox-label">
+                                                                            I authorize the processing of data as per <a href="/privacy-and-cookies-policy">privacy policy</a>
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="column one">
-                                                                    <input type="submit" value="Send a message" class="wpcf7-form-control wpcf7-submit"/>
+                                                                    <button type="submit" class="form-submit-button">Send a message</button>
                                                                 </div>
-                                                                <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                                <div class="form-response-output" aria-hidden="true"></div>
                                                             </form>
                                                         </div>
+                                                        <script>
+                                                            document.addEventListener("DOMContentLoaded", function () {
+                                                                var form = document.getElementById("contact-form");
+                                                        
+                                                                form.addEventListener("submit", function (event) {
+                                                                    event.preventDefault(); // Prevent the form from submitting via the browser
+                                                        
+                                                                    // Validate the form fields
+                                                                    var name = document.getElementById("your-name").value;
+                                                                    var email = document.getElementById("your-email").value;
+                                                                    var subject = document.getElementById("your-subject").value;
+                                                                    var message = document.getElementById("your-message").value;
+                                                                    var acceptance = document.getElementById("acceptance-93").checked;
+                                                        
+                                                                    // Perform your validation logic here
+                                                                    if (name === "" || email === "" || subject === "" || message === "" || !acceptance) {
+                                                                        alert("Please fill out all fields and accept the privacy policy.");
+                                                                    } else {
+                                                                        // Form is valid, submit data using AJAX
+                                                                        var formData = new FormData(form);
+                                                                        fetch("sendmail.php", {
+                                                                            method: "POST",
+                                                                            body: formData
+                                                                        })
+                                                                        .then(function(response) {
+                                                                            return response.json(); // Assuming server sends JSON response
+                                                                        })
+                                                                        .then(function(data) {
+                                                                            // Handle the response from the server
+                                                                            if (data.success) {
+                                                                                // Form submitted successfully, show success message or redirect to thank you page
+                                                                                alert("Form submitted successfully!");
+                                                                            } else {
+                                                                                // Server-side validation failed, handle the error or show error message
+                                                                                alert("Error: " + data.error);
+                                                                            }
+                                                                        })
+                                                                        .catch(function(error) {
+                                                                            // Handle network or server errors
+                                                                            console.error("Error:", error);
+                                                                            alert("An error occurred. Please try again later.");
+                                                                        });
+                                                                    }
+                                                                });
+                                                            });
+                                                        </script>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3764,8 +3803,8 @@
                 <!-- Copyrights -->
                 <div class="copyright">
                     <a href="/wp-content/uploads/2016/04/Code-of-Conductfor.pdf">CODE OF CONDUCT FOR LAWYERS</a>
-                    |   <a href="/privacy-and-cookies-policy/">PRIVACY POLICY</a>
-                    | <a href="/legal-disclaimer/">LEGAL DISCLAIMER</a>
+                    |   <a href="#">PRIVACY POLICY</a>
+                    | <a href="#">LEGAL DISCLAIMER</a>
                     <br/>
                     Powered by <a href="#" rel="noopener" target="_blank">IPROCOMUNICAZIONE </a>
                     |    © 2023 Elite Attorneys | All Rights Reserved. |  P.Iva 02470180817 
