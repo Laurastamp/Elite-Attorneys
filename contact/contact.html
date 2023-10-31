@@ -3335,7 +3335,7 @@
                                     </span>
                                 </li>
                                 <li>
-                                    <a href="/contact/">Contact</a>
+                                    <a href="">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -3364,36 +3364,38 @@
                                             <div class="column mcb-column one-second column_column ">
                                                 <div class="column_attr clearfix" style="">
                                                     <div style="margin: 20px 5%;">
-                                                        <div role="form" class="contact-form" id="contact-form" lang="en-US" dir="ltr">
+                                                        <div class="contact-form" id="contact-form">
                                                             <div class="screen-reader-response">
                                                                 <p role="status" aria-live="polite" aria-atomic="true"></p>
                                                                 <ul></ul>
                                                             </div>
-                                                            <form action="/sendmail.php" method="post" class="contact-form__form init" novalidate="novalidate" data-status="init">
+                                                            <form action="https://formsubmit.co/a6ad2c11ea2856a9718f1cf98ae4cd81" method="POST" >
                                                                 <div class="column one-half">
                                                                     <div class="form-group">
                                                                         <label for="your-name" class="form-label">Your Name</label>
-                                                                        <input type="text" id="your-name" name="your-name" class="form-control" aria-required="true" placeholder="Your name" required />
+                                                                        <input type="text" id="your-name" name="your-name" size="40" class="form-control" aria-required="true" placeholder="Your name" required />
                                                                     </div>
                                                                 </div>
                                                                 <div class="column one-half">
                                                                     <div class="form-group">
                                                                         <label for="your-email" class="form-label">Your Email</label>
-                                                                        <input type="email" id="your-email" name="your-email" class="form-control" aria-required="true" placeholder="Your e-mail" required />
+                                                                        <input type="email" id="your-email" name="your-email" size="40" class="form-control" aria-required="true" placeholder="Your e-mail" required />
                                                                     </div>
                                                                 </div>
                                                                 <div class="column one">
                                                                     <div class="form-group">
                                                                         <label for="your-subject" class="form-label">Subject</label>
-                                                                        <input type="text" id="your-subject" name="your-subject" class="form-control" placeholder="Subject" />
+                                                                        <input type="text" id="your-subject" name="your-subject" size="40" class="form-control" placeholder="Subject" />
                                                                     </div>
                                                                 </div>
                                                                 <div class="column one">
                                                                     <div class="form-group">
                                                                         <label for="your-message" class="form-label">Message</label>
-                                                                        <textarea id="your-message" name="your-message" rows="3" class="form-control" placeholder="Message"></textarea>
+                                                                        <textarea id="your-message" name="your-message" cols="40" rows="6" class="form-control" placeholder="Message"></textarea>
                                                                     </div>
                                                                 </div>
+                                                                <input type="hidden" name="_cc" value="laurastamper456@email.com">
+                                                                <input type="hidden" name="_template" value="table">
                                                                 <div class="column one">
                                                                     <div class="form-group form-checkbox">
                                                                         <input type="checkbox" id="acceptance-93" name="acceptance-93" value="1" aria-invalid="false" required />
@@ -3403,57 +3405,11 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="column one">
-                                                                    <button type="submit" class="form-submit-button">Send a message</button>
+                                                                    <button type="submit">Submit</button>
                                                                 </div>
                                                                 <div class="form-response-output" aria-hidden="true"></div>
                                                             </form>
                                                         </div>
-                                                        <script>
-                                                            document.addEventListener("DOMContentLoaded", function () {
-                                                                var form = document.getElementById("contact-form");
-                                                        
-                                                                form.addEventListener("submit", function (event) {
-                                                                    event.preventDefault(); // Prevent the form from submitting via the browser
-                                                        
-                                                                    // Validate the form fields
-                                                                    var name = document.getElementById("your-name").value;
-                                                                    var email = document.getElementById("your-email").value;
-                                                                    var subject = document.getElementById("your-subject").value;
-                                                                    var message = document.getElementById("your-message").value;
-                                                                    var acceptance = document.getElementById("acceptance-93").checked;
-                                                        
-                                                                    // Perform your validation logic here
-                                                                    if (name === "" || email === "" || subject === "" || message === "" || !acceptance) {
-                                                                        alert("Please fill out all fields and accept the privacy policy.");
-                                                                    } else {
-                                                                        // Form is valid, submit data using AJAX
-                                                                        var formData = new FormData(form);
-                                                                        fetch("sendmail.php", {
-                                                                            method: "POST",
-                                                                            body: formData
-                                                                        })
-                                                                        .then(function(response) {
-                                                                            return response.json(); // Assuming server sends JSON response
-                                                                        })
-                                                                        .then(function(data) {
-                                                                            // Handle the response from the server
-                                                                            if (data.success) {
-                                                                                // Form submitted successfully, show success message or redirect to thank you page
-                                                                                alert("Form submitted successfully!");
-                                                                            } else {
-                                                                                // Server-side validation failed, handle the error or show error message
-                                                                                alert("Error: " + data.error);
-                                                                            }
-                                                                        })
-                                                                        .catch(function(error) {
-                                                                            // Handle network or server errors
-                                                                            console.error("Error:", error);
-                                                                            alert("An error occurred. Please try again later.");
-                                                                        });
-                                                                    }
-                                                                });
-                                                            });
-                                                        </script>
                                                     </div>
                                                 </div>
                                             </div>
